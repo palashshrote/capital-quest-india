@@ -1,0 +1,48 @@
+{
+    "questions": [
+        {
+            "state": "Andhra Pradesh",
+            "capital": "Amaravati"
+        },
+        {
+            "state": "Arunachal Pradesh",
+            "capital": "Itanagar"
+        },
+        {
+            "state": "Assam",
+            "capital": "Dispur"
+        },
+        {
+            "state": "Bihar",
+            "capital": "Patna"
+        },
+        {
+            "state": "Chhattisgarh",
+            "capital": "Raipur"
+        },
+        {
+            "state": "Goa",
+            "capital": "Panaji"
+        },
+        {
+            "state": "Gujarat",
+            "capital": "Gandhinagar"
+        },
+        {
+            "state": "Haryana",
+            "capital": "Chandigarh"
+        },
+        {
+            "state": "Himachal Pradesh",
+            "capital": "Shimla"
+        },
+        {
+            "state": "Jharkhand",
+            "capital": "Ranchi"
+        },
+        {
+            "state": "Karnataka",
+            "capital": "Bengaluru"
+        }
+    ]
+}
