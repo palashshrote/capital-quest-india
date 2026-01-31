@@ -2,7 +2,6 @@ import { useEffect, useReducer } from "react";
 import Header from "./Header";
 import StartScreen from "./StartScreen";
 import Main from "./Main";
-import NextButton from "./NextButton";
 import FinishScreen from "./FinishScreen";
 import Questions from "./Questions";
 
@@ -52,6 +51,8 @@ function reducer(state, action) {
       return {
         ...state,
         status: "finished",
+        points: action.payload === state.questions[state.index].capital ? state.points+10 : state.points,
+        answer: null
       };
     case "newAnswer": 
       return {
