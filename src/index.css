@@ -71,7 +71,16 @@ button:hover {
 button:active {
   transform: scale(0.97);
 }
+.progress {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
 
+.stats {
+  display: flex;
+  justify-content: space-between;
+}
 /* ---------- Mobile Tweaks ---------- */
 
 @media (max-width: 480px) {
@@ -81,6 +90,9 @@ button:active {
   button {
     font-size: 0.95rem;
     padding: 12px;
+  }
+  .stats{
+    flex-direction: column;
   }
 }
 
