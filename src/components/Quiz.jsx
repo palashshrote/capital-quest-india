@@ -4,6 +4,7 @@ import StartScreen from "./StartScreen";
 import Main from "./Main";
 import FinishScreen from "./FinishScreen";
 import Questions from "./Questions";
+import Progress from "./Progress";
 
 const initialState = {
   questions: [],
@@ -46,8 +47,8 @@ function reducer(state, action) {
         status: "active",
         index: 0,
         points: 0,
-        answer: null
-      }
+        answer: null,
+      };
     case "finish":
       const isCorrect = action.payload === state.questions[state.index].capital;
       const newPoints = isCorrect ? state.points + 10 : state.points;
@@ -59,14 +60,14 @@ function reducer(state, action) {
         highScore: newHighScore,
         answer: null
       };
-    case "newAnswer": 
+    case "newAnswer":
       return {
         ...state,
         points: action.payload === state.questions[state.index].capital ? state.points+10 : state.points,
         highScore: state.points > state.highScore ? state.points : state.highScore,
         answer: null,
-        index: state.index + 1
-      }
+        index: state.index + 1,
+      };
   }
 }
 function fetchLocalStorage() {
@@ -75,10 +76,8 @@ function fetchLocalStorage() {
   return retrivedHighScore;
 }
 function Quiz() {
-  const [{ questions, status, index, answer,points, highScore }, dispatch] = useReducer(
-    reducer,
-    initialState,
-  );
+  const [{ questions, status, index, answer, points, highScore }, dispatch] =
+    useReducer(reducer, initialState);
   useEffect(function () {
     async function fetchData() {
       try {
@@ -110,15 +109,31 @@ function Quiz() {
         )}
         {/* {status === "active" && <h3>Capital of {questions[index].state}</h3>} */}
         {status === "active" && (
-          <Questions  
-            questions={questions}
+          <>
+            <Progress
+              index={index}
+              numQuestions={numQuestions}
+              points={points}
+              totalPoints={numQuestions * 10}
+              answer={answer}
+            />
+            <Questions
+              questions={questions}
+              dispatch={dispatch}
+              numQuestions={numQuestions}
+              index={index}
+              answer={answer}
+            />
+          </>
+        )}
+        {status === "finished" && (
+          <FinishScreen
+            points={points}
+            maxPossiblePoints={10 * numQuestions}
+            highScore={highScore}
             dispatch={dispatch}
-            numQuestions={numQuestions}
-            index={index}
-            answer={answer}
           />
         )}
-        {status === "finished" && <FinishScreen points={points} maxPossiblePoints={10*numQuestions} highScore={highScore} dispatch={dispatch} />}
       </Main>
     </div>
   );
