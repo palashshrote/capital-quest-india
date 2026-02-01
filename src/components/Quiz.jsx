@@ -107,7 +107,6 @@ function Quiz() {
         {status === "ready" && (
           <StartScreen totalQuestion={numQuestions} dispatch={dispatch} />
         )}
-        {/* {status === "active" && <h3>Capital of {questions[index].state}</h3>} */}
         {status === "active" && (
           <>
             <Progress
