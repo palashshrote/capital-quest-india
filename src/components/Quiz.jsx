@@ -32,6 +32,7 @@ function reducer(state, action) {
     case "start":
       return {
         ...state,
+        highScore: fetchLocalStorage(),
         status: "active",
       };
     case "nextQuestion":
@@ -49,28 +50,31 @@ function reducer(state, action) {
         answer: null,
       };
     case "finish":
+      const isCorrect = action.payload === state.questions[state.index].capital;
+      const newPoints = isCorrect ? state.points + 10 : state.points;
+      const newHighScore = Math.max(state.highScore, newPoints);
       return {
         ...state,
         status: "finished",
-        points:
-          action.payload === state.questions[state.index].capital
-            ? state.points + 10
-            : state.points,
-        answer: null,
+        points: newPoints,
+        highScore: newHighScore,
+        answer: null
       };
     case "newAnswer":
       return {
         ...state,
-        points:
-          action.payload === state.questions[state.index].capital
-            ? state.points + 10
-            : state.points,
+        points: action.payload === state.questions[state.index].capital ? state.points+10 : state.points,
+        highScore: state.points > state.highScore ? state.points : state.highScore,
         answer: null,
         index: state.index + 1,
       };
   }
 }
-
+function fetchLocalStorage() {
+  const stored = localStorage.getItem("capitalQuestHighScore");
+  const retrivedHighScore = JSON.parse(stored);
+  return retrivedHighScore;
+}
 function Quiz() {
   const [{ questions, status, index, answer, points, highScore }, dispatch] =
     useReducer(reducer, initialState);
@@ -89,6 +93,11 @@ function Quiz() {
     }
     fetchData();
   }, []);
+
+  useEffect(function () {
+    const storedHs = Number(fetchLocalStorage() || 0);
+    if(storedHs < highScore) localStorage.setItem("capitalQuestHighScore", JSON.stringify(highScore));
+  },[highScore]);
 
   const numQuestions = questions.length;
   return (
