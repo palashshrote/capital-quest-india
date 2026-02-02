@@ -84,7 +84,9 @@ button:active {
   flex-direction: column;
   gap: 10px;
 }
-
+.progress progress {
+  width: 100%;
+}
 .stats {
   display: flex;
   justify-content: space-between;
