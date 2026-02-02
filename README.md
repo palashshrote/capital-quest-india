@@ -1,16 +1,46 @@
-# React + Vite
+# 🇮🇳 Capital Quest India
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A fun and interactive **Quiz game** to test your knowledge of **Indian States and their Capitals**.
 
-Currently, two official plugins are available:
+Built using **React (useReducer,fetchAPI)** with a clean and responsive UI.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🚀 Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+✅ Randomized capital options  
+✅ Multiple choice quiz  
+✅ Score tracking  
+✅ High score tracking (persistent via localStorage)  
+✅ Responsive layout (mobile friendly)  
+✅ Built with useReducer for predictable state management  
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🎮 How it Works
+
+- A state is shown on screen
+- 4 capital options are displayed
+- Select the correct answer
+- Score increases for correct answers
+- High score is saved locally
+- Quiz ends after last question
+
+---
+
+## 🛠 Tech Stack
+
+- React
+- JavaScript (ES6+)
+- useReducer
+- CSS (Flexbox/Grid)
+- LocalStorage
+
+---
+
+## 📦 Installation
+
+Clone the repo:
+
+```bash
+git clone https://github.com/your-username/capital-quest-india.git

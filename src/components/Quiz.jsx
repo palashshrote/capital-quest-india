@@ -81,7 +81,7 @@ function Quiz() {
   useEffect(function () {
     async function fetchData() {
       try {
-        const res = await fetch(`http://localhost:3001/questions`);
+        const res = await fetch(`https://capital-quest-india-backend.onrender.com/questions`);
         if (!res.ok) {
           throw new Error("Failed to fetch data");
         }
